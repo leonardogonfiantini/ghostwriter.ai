@@ -1,0 +1,2 @@
+# ghostwriter.ai
+SDAI project

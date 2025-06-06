@@ -1,17 +1,204 @@
-research_task:
+research_story:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
+    Research and create a compelling story outline for a book about {topic}. 
+    The book MUST be exactly {word_count} words long.
+    
+    Calculate the structure as follows:
+    - Introduction: 10% of total words
+    - Each chapter: Calculate based on number of chapters to reach exact word count
+    - Conclusion: 5% of total words
+    
+    Include market analysis, target audience identification, and detailed chapter breakdown.
+    Use internet search tools to find:
+    - Recent bestsellers in the {topic} category
+    - Current market trends and reader preferences
+    - Unique angles or approaches not yet explored
+    - Target audience demographics and interests
   expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+    A detailed story outline including:
+    - Executive summary of the book concept
+    - Target audience analysis
+    - Market research findings
+    - EXACT word count breakdown: Introduction ({word_count} * 0.10 words), Chapters (calculated per chapter), Conclusion ({word_count} * 0.05 words)
+    - Detailed chapter structure with word count targets for each section
+    - 3 alternative narrative approaches
+    - Competitive analysis of similar books
 
-reporting_task:
+write_book:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Write a complete book based on the provided outline and research. 
+    
+    CRITICAL REQUIREMENTS:
+    - The book MUST be EXACTLY {word_count} words (±50 words tolerance)
+    - Count words continuously during writing
+    - Follow the exact chapter structure from the outline
+    - Each chapter must meet its specified word count target
+    
+    Before starting each chapter, calculate:
+    - Current total word count
+    - Remaining words needed
+    - Target words for this chapter
+    
+    Writing process:
+    1. Write introduction (target: 10% of {word_count} words)
+    2. Write each chapter following outline word targets
+    3. Write conclusion (target: 5% of {word_count} words)
+    4. Count total words and adjust if necessary
+    
+    Ensure the content is:
+    - Well-researched and accurate
+    - Engaging and accessible to the target audience
+    - Properly structured with clear chapter divisions
+    - Consistent in tone and style throughout
+    - Include relevant examples, case studies, or anecdotes
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    A complete manuscript including:
+    - Compelling title and subtitle
+    - Table of contents with word counts per section
+    - Introduction (exact word count: {word_count} * 0.10)
+    - Well-structured chapters with clear headings (each meeting target word count)
+    - Conclusion (exact word count: {word_count} * 0.05)
+    - TOTAL WORD COUNT: EXACTLY {word_count} words (±50 tolerance)
+    - Word count verification at the end
+
+edit_content:
+  description: >
+    Thoroughly edit the written book for grammar, style, coherence, and flow.
+    
+    CRITICAL: Maintain EXACTLY {word_count} words (±50 tolerance)
+    
+    Editing process:
+    1. First pass: Grammar, spelling, and punctuation corrections
+    2. Second pass: Sentence structure and clarity improvements  
+    3. Third pass: Paragraph flow and logical transitions
+    4. Fourth pass: Word count verification and adjustment
+    
+    If word count deviates from target:
+    - If over: Remove redundant phrases, combine sentences, eliminate wordiness
+    - If under: Expand explanations, add examples, enhance descriptions
+    
+    Focus on:
+    - Grammar, spelling, and punctuation corrections
+    - Sentence structure and clarity improvements
+    - Paragraph flow and logical transitions
+    - Consistency in tone and voice
+    - Fact-checking and accuracy verification
+    - MAINTAINING EXACT WORD COUNT TARGET
+    
+    Provide detailed feedback and corrections while maintaining the author's voice.
+  expected_output: >
+    An edited manuscript with:
+    - All grammatical and spelling errors corrected
+    - Improved sentence structure and clarity
+    - Enhanced flow between paragraphs and chapters
+    - Consistent tone and style throughout
+    - VERIFIED word count of EXACTLY {word_count} words (±50)
+    - Detailed editor's notes and suggestions
+    - Word count report showing before/after counts per section
+
+review_quality:
+  description: >
+    Review the edited manuscript for accuracy, market potential, and publishing standards.
+    
+    MANDATORY CHECKS:
+    1. Word count verification: Must be EXACTLY {word_count} words (±50 tolerance)
+    2. Content quality assessment
+    3. Market viability analysis
+    4. Technical accuracy check
+    
+    If word count is incorrect, REJECT the manuscript and request revision.
+    
+    Evaluate:
+    - Word count compliance (CRITICAL)
+    - Technical accuracy and factual correctness
+    - Market viability and commercial potential
+    - Originality and unique value proposition
+    - Compliance with publishing standards
+    - Overall quality and readability
+    - Potential audience reception
+    
+    Approval criteria:
+    - Word count: EXACTLY {word_count} ±50 words
+    - Quality score: 7/10 or higher
+    - Market potential: Medium or High
+    - Technical accuracy: 90% or higher
+    
+    Provide a detailed assessment and recommendation for approval or rejection.
+  expected_output: >
+    A comprehensive quality assessment including:
+    - WORD COUNT VERIFICATION: [PASS/FAIL] - Actual count vs target {word_count}
+    - Overall quality score (1-10)
+    - Detailed evaluation of content accuracy
+    - Market potential analysis (Low/Medium/High)
+    - Competitive positioning assessment
+    - Identified strengths and weaknesses
+    - Specific recommendations for improvement
+    - Final recommendation: APPROVE/REJECT with detailed reasoning
+    - If REJECTED: Specific requirements for revision
+
+coordinate_publication:
+  description: >
+    Make the final publication decision based on all previous work and coordinate 
+    any final adjustments needed before publication.
+    
+    RECURSIVE PROCESS:
+    1. Review all previous assessments
+    2. If quality_reviewer REJECTED the manuscript:
+       - Identify specific issues
+       - Send back to appropriate stage (writer/editor)
+       - Restart the process from that point
+    3. If word count is incorrect:
+       - Send back to editor for word count adjustment
+       - Require re-review after correction
+    4. Only approve if ALL criteria are met
+    
+    Consider:
+    - All feedback from the editing and review process
+    - Word count compliance (CRITICAL)
+    - Market timing and commercial viability
+    - Resource allocation and budget considerations
+    - Publication timeline and deadlines
+    - Final quality assurance
+    
+    Decision criteria for PUBLICATION:
+    - Quality review: APPROVED
+    - Word count: EXACTLY {word_count} ±50 words
+    - Market potential: Medium or High
+    - All revisions completed satisfactorily
+    
+    Make the ultimate go/no-go decision for publication.
+  expected_output: >
+    Final publication decision document including:
+    - Executive summary of the entire process
+    - Revision history (if any)
+    - Final decision: PUBLISH/REVISE/REJECT
+    - Detailed reasoning for the decision
+    - If PUBLISH: publication timeline and next steps
+    - If REVISE: specific revision requirements and which stage to return to
+    - If REJECT: comprehensive explanation and alternative recommendations
+    - Final word count verification
+    - Budget and resource requirements
+    - Risk assessment and mitigation strategies
+
+# RECURSIVE TASKS (attivati solo se necessario)
+revise_writing:
+  description: >
+    Revise the book manuscript based on quality reviewer feedback.
+    Focus on the specific issues identified in the quality assessment.
+    
+    MAINTAIN EXACT WORD COUNT: {word_count} words (±50 tolerance)
+    
+    Revision requirements will be provided by the publishing coordinator.
+    Address each point systematically while preserving the overall structure and flow.
+  expected_output: >
+    A revised manuscript addressing all identified issues while maintaining 
+    exactly {word_count} words and the original structure and quality.
+
+revise_editing:
+  description: >
+    Re-edit the manuscript focusing on the specific issues identified in the review process.
+    Pay special attention to word count accuracy and any quality concerns raised.
+    
+    CRITICAL: Ensure final word count is EXACTLY {word_count} words (±50 tolerance)
+  expected_output: >
+    A re-edited manuscript with all issues resolved and exact word count achieved.

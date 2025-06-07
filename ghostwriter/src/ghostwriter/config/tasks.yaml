@@ -1,204 +1,238 @@
-research_story:
+research_task:
   description: >
-    Research and create a compelling story outline for a book about {topic}. 
-    The book MUST be exactly {word_count} words long.
+    Conduct comprehensive research on the topic "{topic}" to gather complete
+    and relevant information for writing a book targeted at "{target_audience}".
     
-    Calculate the structure as follows:
-    - Introduction: 10% of total words
-    - Each chapter: Calculate based on number of chapters to reach exact word count
-    - Conclusion: 5% of total words
+    Your research must include:
+    1. Basic information and historical context about the topic
+    2. Current trends and recent developments
+    3. Relevant statistics and data
+    4. Expert quotes and authoritative sources
+    5. Writing styles used by other authors on similar topics
+    6. Examples of effective narrative approaches
+    7. Useful bibliographic resources and references
+    8. Controversial aspects or ongoing debates
+    9. Interesting case studies or practical examples
+    10. Technical terminology and key concepts to include
     
-    Include market analysis, target audience identification, and detailed chapter breakdown.
-    Use internet search tools to find:
-    - Recent bestsellers in the {topic} category
-    - Current market trends and reader preferences
-    - Unique angles or approaches not yet explored
-    - Target audience demographics and interests
+    Organize information in a structured way and always indicate sources.
+    
   expected_output: >
-    A detailed story outline including:
-    - Executive summary of the book concept
-    - Target audience analysis
-    - Market research findings
-    - EXACT word count breakdown: Introduction ({word_count} * 0.10 words), Chapters (calculated per chapter), Conclusion ({word_count} * 0.05 words)
-    - Detailed chapter structure with word count targets for each section
-    - 3 alternative narrative approaches
-    - Competitive analysis of similar books
+    A complete and well-organized research report that includes:
+    - Executive summary of key information
+    - Thematic sections with detailed information
+    - List of relevant quotes with attributions
+    - Analysis of observed writing styles
+    - Recommendations for narrative approach
+    - Bibliography and consulted sources
+    
+    The report must be at least 2000 words and provide a solid foundation
+    for book creation.
 
-write_book:
+design_task:
   description: >
-    Write a complete book based on the provided outline and research. 
+    Based on the provided research report, design the complete structure of a book
+    on topic "{topic}" for target audience "{target_audience}" with length "{book_length}".
     
-    CRITICAL REQUIREMENTS:
-    - The book MUST be EXACTLY {word_count} words (±50 words tolerance)
-    - Count words continuously during writing
-    - Follow the exact chapter structure from the outline
-    - Each chapter must meet its specified word count target
+    Your design must include:
+    1. Compelling and relevant main book title
+    2. Explanatory subtitle (if necessary)
+    3. General book structure (number of chapters, logical organization)
+    4. Specific title for each chapter
+    5. Brief description of each chapter's content (2-3 paragraphs)
+    6. Narrative thread connecting all chapters
+    7. Tone of voice and writing style to adopt
+    8. Special elements to include (info boxes, quotes, examples)
+    9. Target length for each chapter
+    10. Notes for maintaining stylistic consistency
     
-    Before starting each chapter, calculate:
-    - Current total word count
-    - Remaining words needed
-    - Target words for this chapter
+    IMPORTANT: You must determine the optimal number of chapters for this topic.
+    Consider the book length, topic complexity, and target audience.
+    Typical ranges:
+    - Short books: 3-5 chapters
+    - Medium books: 4-8 chapters  
+    - Long books: 8-12 chapters
     
-    Writing process:
-    1. Write introduction (target: 10% of {word_count} words)
-    2. Write each chapter following outline word targets
-    3. Write conclusion (target: 5% of {word_count} words)
-    4. Count total words and adjust if necessary
+    Adapt complexity and language to the specified target audience.
     
-    Ensure the content is:
-    - Well-researched and accurate
-    - Engaging and accessible to the target audience
-    - Properly structured with clear chapter divisions
-    - Consistent in tone and style throughout
-    - Include relevant examples, case studies, or anecdotes
   expected_output: >
-    A complete manuscript including:
-    - Compelling title and subtitle
-    - Table of contents with word counts per section
-    - Introduction (exact word count: {word_count} * 0.10)
-    - Well-structured chapters with clear headings (each meeting target word count)
-    - Conclusion (exact word count: {word_count} * 0.05)
-    - TOTAL WORD COUNT: EXACTLY {word_count} words (±50 tolerance)
-    - Word count verification at the end
+    A complete design document that includes:
+    - Book title and subtitle
+    - Detailed table of contents with chapter titles
+    - 2-3 paragraph description for each chapter
+    - Stylistic and narrative guidelines
+    - Technical specifications (length, tone, special elements)
+    - Strategy for narrative consistency
+    - Clear statement of total number of chapters chosen
+    
+    The design must be clear, detailed, and provide a complete roadmap
+    for the writers. Make sure to explicitly state how many chapters
+    the book will have.
 
-edit_content:
+conclusion_task:
   description: >
-    Thoroughly edit the written book for grammar, style, coherence, and flow.
+    Write the book's conclusion that summarizes the key points covered in the
+    previous chapters and provides a satisfying closure for the reader.
     
-    CRITICAL: Maintain EXACTLY {word_count} words (±50 tolerance)
+    The conclusion must:
+    1. Summarize the main concepts of the book
+    2. Connect all chapters in an overall vision
+    3. Provide final reflections on the topic
+    4. Include call-to-action or suggestions for the reader
+    5. Leave a lasting and positive impression
+    6. Maintain the tone of voice of the rest of the book
     
-    Editing process:
-    1. First pass: Grammar, spelling, and punctuation corrections
-    2. Second pass: Sentence structure and clarity improvements  
-    3. Third pass: Paragraph flow and logical transitions
-    4. Fourth pass: Word count verification and adjustment
-    
-    If word count deviates from target:
-    - If over: Remove redundant phrases, combine sentences, eliminate wordiness
-    - If under: Expand explanations, add examples, enhance descriptions
-    
-    Focus on:
-    - Grammar, spelling, and punctuation corrections
-    - Sentence structure and clarity improvements
-    - Paragraph flow and logical transitions
-    - Consistency in tone and voice
-    - Fact-checking and accuracy verification
-    - MAINTAINING EXACT WORD COUNT TARGET
-    
-    Provide detailed feedback and corrections while maintaining the author's voice.
   expected_output: >
-    An edited manuscript with:
-    - All grammatical and spelling errors corrected
-    - Improved sentence structure and clarity
-    - Enhanced flow between paragraphs and chapters
-    - Consistent tone and style throughout
-    - VERIFIED word count of EXACTLY {word_count} words (±50)
-    - Detailed editor's notes and suggestions
-    - Word count report showing before/after counts per section
+    A conclusion of 800-1500 words that effectively closes the book,
+    summarizes key points, and leaves the reader satisfied and inspired.
 
-review_quality:
+control_task:
   description: >
-    Review the edited manuscript for accuracy, market potential, and publishing standards.
+    Perform a complete and detailed review of all book content
+    to verify quality, consistency, and correctness. This is a critical check
+    to ensure excellence of the final product.
     
-    MANDATORY CHECKS:
-    1. Word count verification: Must be EXACTLY {word_count} words (±50 tolerance)
-    2. Content quality assessment
-    3. Market viability analysis
-    4. Technical accuracy check
+    Verify the following aspects:
     
-    If word count is incorrect, REJECT the manuscript and request revision.
+    GRAMMAR AND SYNTAX:
+    1. Spelling and typing errors
+    2. Grammatical and punctuation errors
+    3. Sentence construction and text fluidity
+    4. Correct use of verb tenses
     
-    Evaluate:
-    - Word count compliance (CRITICAL)
-    - Technical accuracy and factual correctness
-    - Market viability and commercial potential
-    - Originality and unique value proposition
-    - Compliance with publishing standards
-    - Overall quality and readability
-    - Potential audience reception
+    NARRATIVE CONSISTENCY:
+    1. Consistency between chapters and original design
+    2. Logical thread connecting all chapters
+    3. Appropriate transitions between sections
+    4. Maintenance of tone of voice throughout
     
-    Approval criteria:
-    - Word count: EXACTLY {word_count} ±50 words
-    - Quality score: 7/10 or higher
-    - Market potential: Medium or High
-    - Technical accuracy: 90% or higher
+    CONTENT QUALITY:
+    1. Accuracy of presented information
+    2. Appropriateness for target audience
+    3. Completeness according to designer specifications
+    4. Balance between chapters
     
-    Provide a detailed assessment and recommendation for approval or rejection.
+    STRUCTURE AND ORGANIZATION:
+    1. Adherence to original design
+    2. Appropriate chapter length
+    3. Logical organization of information
+    4. Effectiveness of introduction and conclusion
+    
+    If you find errors or inconsistencies, provide:
+    - Specific identification of the problem
+    - Explanation of why it's problematic
+    - Concrete suggestion for correction
+    - Problem priority (high/medium/low)
+    
+    Maximum number of iterations for corrections: 3
+    
   expected_output: >
-    A comprehensive quality assessment including:
-    - WORD COUNT VERIFICATION: [PASS/FAIL] - Actual count vs target {word_count}
-    - Overall quality score (1-10)
-    - Detailed evaluation of content accuracy
-    - Market potential analysis (Low/Medium/High)
-    - Competitive positioning assessment
-    - Identified strengths and weaknesses
-    - Specific recommendations for improvement
-    - Final recommendation: APPROVE/REJECT with detailed reasoning
-    - If REJECTED: Specific requirements for revision
+    A detailed quality control report that includes:
+    
+    1. EXECUTIVE SUMMARY:
+       - General quality assessment (Excellent/Good/Sufficient/Insufficient)
+       - Total number of problems found by category
+       - General recommendations
+    
+    2. DETAILED ANALYSIS:
+       - Specific list of each error found with location
+       - Problem categorization by type
+       - Concrete suggestions for each correction
+    
+    3. CONSISTENCY EVALUATION:
+       - Analysis of narrative consistency between chapters
+       - Verification of adherence to original design
+       - Assessment of overall logical thread
+    
+    4. RECOMMENDATIONS:
+       - Priority of necessary corrections
+       - Suggestions for optional improvements
+       - Notes for future revisions
+    
+    If there are no significant problems, declare the book "APPROVED FOR PUBLICATION"
+    with a brief explanation of the quality achieved.
 
-coordinate_publication:
+final_evaluation:
   description: >
-    Make the final publication decision based on all previous work and coordinate 
-    any final adjustments needed before publication.
+    As Editorial Director, provide a professional and comprehensive evaluation
+    of the completed book, assigning a final grade based on industry-standard
+    editorial criteria.
     
-    RECURSIVE PROCESS:
-    1. Review all previous assessments
-    2. If quality_reviewer REJECTED the manuscript:
-       - Identify specific issues
-       - Send back to appropriate stage (writer/editor)
-       - Restart the process from that point
-    3. If word count is incorrect:
-       - Send back to editor for word count adjustment
-       - Require re-review after correction
-    4. Only approve if ALL criteria are met
+    Evaluation criteria (each on 1-10 scale):
     
-    Consider:
-    - All feedback from the editing and review process
-    - Word count compliance (CRITICAL)
-    - Market timing and commercial viability
-    - Resource allocation and budget considerations
-    - Publication timeline and deadlines
-    - Final quality assurance
+    1. WRITING QUALITY (25%)
+       - Language fluidity and clarity
+       - Vocabulary richness
+       - Stylistic effectiveness
+       - Absence of errors
     
-    Decision criteria for PUBLICATION:
-    - Quality review: APPROVED
-    - Word count: EXACTLY {word_count} ±50 words
-    - Market potential: Medium or High
-    - All revisions completed satisfactorily
+    2. CONSISTENCY AND STRUCTURE (20%)
+       - Logical content organization
+       - Narrative consistency between chapters
+       - Book architecture effectiveness
+       - Transitions and connections
     
-    Make the ultimate go/no-go decision for publication.
+    3. CONTENT VALUE (25%)
+       - Information depth and accuracy
+       - Originality and insights
+       - Relevance to target audience
+       - Treatment completeness
+    
+    4. ENGAGEMENT AND READABILITY (15%)
+       - Ability to capture attention
+       - Maintaining interest
+       - Language accessibility
+       - Narrative rhythm
+    
+    5. TARGET APPROPRIATENESS (15%)
+       - Tone appropriateness
+       - Adequate complexity level
+       - Example relevance
+       - Expectation satisfaction
+    
+    Calculate final grade as weighted average of criteria.
+    
+    Final evaluation scale:
+    - 9.0-10.0: Masterpiece (immediate publication, potential bestseller)
+    - 8.0-8.9: Excellent (recommended publication)
+    - 7.0-7.9: Good (publishable with minimal adjustments)
+    - 6.0-6.9: Sufficient (moderate revisions needed)
+    - 5.0-5.9: Insufficient (substantial revisions required)
+    - <5.0: Unacceptable (rewriting necessary)
+    
   expected_output: >
-    Final publication decision document including:
-    - Executive summary of the entire process
-    - Revision history (if any)
-    - Final decision: PUBLISH/REVISE/REJECT
-    - Detailed reasoning for the decision
-    - If PUBLISH: publication timeline and next steps
-    - If REVISE: specific revision requirements and which stage to return to
-    - If REJECT: comprehensive explanation and alternative recommendations
-    - Final word count verification
-    - Budget and resource requirements
-    - Risk assessment and mitigation strategies
-
-# RECURSIVE TASKS (attivati solo se necessario)
-revise_writing:
-  description: >
-    Revise the book manuscript based on quality reviewer feedback.
-    Focus on the specific issues identified in the quality assessment.
+    A professional editorial evaluation that includes:
     
-    MAINTAIN EXACT WORD COUNT: {word_count} words (±50 tolerance)
+    1. EXECUTIVE SUMMARY:
+       - Final grade out of 10
+       - Quality category
+       - Editorial recommendation
     
-    Revision requirements will be provided by the publishing coordinator.
-    Address each point systematically while preserving the overall structure and flow.
-  expected_output: >
-    A revised manuscript addressing all identified issues while maintaining 
-    exactly {word_count} words and the original structure and quality.
-
-revise_editing:
-  description: >
-    Re-edit the manuscript focusing on the specific issues identified in the review process.
-    Pay special attention to word count accuracy and any quality concerns raised.
+    2. DETAILED ANALYSIS BY CRITERIA:
+       - Specific score for each criterion (1-10)
+       - Detailed comments on strengths
+       - Identification of improvement areas
     
-    CRITICAL: Ensure final word count is EXACTLY {word_count} words (±50 tolerance)
-  expected_output: >
-    A re-edited manuscript with all issues resolved and exact word count achieved.
+    3. STRENGTHS:
+       - Excellent aspects of the book
+       - Distinctive and original elements
+       - Features that make it competitive
+    
+    4. IMPROVEMENT AREAS:
+       - Aspects that could be enhanced
+       - Suggestions for future editions
+       - Marketing considerations
+    
+    5. FINAL RECOMMENDATIONS:
+       - Publication decision
+       - Suggested marketing strategy
+       - Estimated sales target
+       - Notes for the author
+    
+    6. MARKET COMPARISON:
+       - Positioning versus competition
+       - Commercial potential
+       - Actual target audience
+    
+    The evaluation must be objective, constructive, and professional,
+    providing judgment that reflects publishing industry standards.

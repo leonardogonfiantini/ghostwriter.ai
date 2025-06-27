@@ -69,10 +69,112 @@ design_task:
     for the writers. Make sure to explicitly state how many chapters
     the book will have.
 
+# Chapter writing task template (used dynamically)
+chapter_task_template:
+  description: >
+    Write Chapter {chapter_num} of the book following the structure defined by the designer.
+    
+    Use the research findings and design specifications from the previous tasks to inform your writing.
+    
+    Requirements:
+    - Follow exactly the specifications for Chapter {chapter_num} from the design
+    - Maintain consistency with the established tone and style
+    - Use relevant information from the research
+    - Write approximately 1500-3000 words for medium length books
+    - Create engaging content that flows naturally
+    - End with a smooth transition (unless it's the final chapter)
+    
+    Chapter number: {chapter_num}
+    Total chapters: {total_chapters}
+    
+    {revision_instructions}
+    
+  expected_output: >
+    A complete Chapter {chapter_num} that:
+    - Follows the designer's specifications exactly
+    - Is stylistically consistent with the overall book
+    - Includes all elements specified in the design
+    - Incorporates relevant research findings
+    - Is engaging and flows well
+    - Has appropriate length for the book type
+    - Maintains narrative coherence
+    {revision_requirements}
+
+# Chapter review task template (used dynamically)
+chapter_review_template:
+  description: >
+    Review Chapter {chapter_num} for quality, consistency, and correctness.
+    Provide immediate, constructive feedback for the writer.
+    
+    CHAPTER CONTENT TO REVIEW:
+    {chapter_content}
+    
+    Perform a detailed analysis focusing on:
+    
+    1. GRAMMAR AND SYNTAX:
+       - Spelling and typing errors
+       - Grammatical and punctuation errors
+       - Sentence construction and text fluidity
+       - Correct use of verb tenses
+    
+    2. CONTENT QUALITY:
+       - Accuracy of presented information
+       - Appropriateness for target audience
+       - Completeness according to design specifications
+       - Narrative flow and engagement
+    
+    3. CONSISTENCY:
+       - Adherence to established tone and style
+       - Consistency with previous chapters (if applicable)
+       - Proper transitions and connections
+    
+    4. STRUCTURE:
+       - Chapter organization and pacing
+       - Appropriate length and depth
+       - Clear introduction and conclusion
+    
+    If you find any issues, provide:
+    - Specific identification of the problem with exact location
+    - Explanation of why it's problematic
+    - Concrete suggestion for correction
+    - Priority level (HIGH/MEDIUM/LOW)
+    
+    Chapter number: {chapter_num}
+    
+  expected_output: >
+    A detailed review report for Chapter {chapter_num} that includes:
+    
+    1. OVERALL ASSESSMENT:
+       - Quality rating (EXCELLENT/GOOD/NEEDS_IMPROVEMENT/POOR)
+       - Summary of main strengths
+       - Summary of main issues
+    
+    2. SPECIFIC ISSUES FOUND:
+       - List each problem with exact location
+       - Categorize by type (grammar, content, consistency, structure)
+       - Provide specific correction suggestions
+       - Assign priority level
+    
+    3. RECOMMENDATIONS:
+       - Required changes (HIGH priority)
+       - Suggested improvements (MEDIUM/LOW priority)
+       - Overall guidance for revision
+    
+    4. DECISION:
+       - APPROVED: Chapter is ready for publication
+       - MINOR_REVISIONS: Small changes needed
+       - MAJOR_REVISIONS: Significant rewriting required
+       - REJECT: Chapter needs to be completely rewritten
+    
+    Be constructive and specific in your feedback to help the writer improve the chapter effectively.
+
 conclusion_task:
   description: >
     Write the book's conclusion that summarizes the key points covered in the
     previous chapters and provides a satisfying closure for the reader.
+    
+    Review all the chapters that have been written and approved to ensure
+    your conclusion properly addresses the entire book content.
     
     The conclusion must:
     1. Summarize the main concepts of the book
@@ -81,158 +183,202 @@ conclusion_task:
     4. Include call-to-action or suggestions for the reader
     5. Leave a lasting and positive impression
     6. Maintain the tone of voice of the rest of the book
+    7. Reference key points from each chapter
+    8. Provide a sense of completion and fulfillment
     
   expected_output: >
-    A conclusion of 800-1500 words that effectively closes the book,
-    summarizes key points, and leaves the reader satisfied and inspired.
+    A compelling conclusion of 800-1500 words that:
+    - Effectively summarizes the book's key themes
+    - Connects all chapters in a cohesive narrative
+    - Provides actionable next steps for readers
+    - Maintains stylistic consistency with approved chapters
+    - References specific insights from each chapter
+    - Leaves readers satisfied and inspired
+    - Creates a memorable and impactful ending
 
 control_task:
   description: >
-    Perform a complete and detailed review of all book content
-    to verify quality, consistency, and correctness. This is a critical check
-    to ensure excellence of the final product.
+    Perform a comprehensive final review of the complete book to verify
+    overall quality, consistency, and readiness for publication.
+    This is the final quality gate before publication.
     
-    Verify the following aspects:
+    Since individual chapters have already been reviewed and revised through
+    the interactive process, focus on the book as a unified whole.
     
-    GRAMMAR AND SYNTAX:
-    1. Spelling and typing errors
-    2. Grammatical and punctuation errors
-    3. Sentence construction and text fluidity
-    4. Correct use of verb tenses
+    Conduct a holistic review of the entire book, focusing on:
     
-    NARRATIVE CONSISTENCY:
-    1. Consistency between chapters and original design
-    2. Logical thread connecting all chapters
-    3. Appropriate transitions between sections
-    4. Maintenance of tone of voice throughout
+    OVERALL CONSISTENCY:
+    1. Narrative thread throughout all chapters
+    2. Consistent tone and style maintenance
+    3. Logical progression from introduction to conclusion
+    4. Coherent treatment of the main topic
+    5. Smooth transitions between all chapters
     
-    CONTENT QUALITY:
-    1. Accuracy of presented information
-    2. Appropriateness for target audience
-    3. Completeness according to designer specifications
-    4. Balance between chapters
+    STRUCTURAL INTEGRITY:
+    1. Adherence to original design specifications
+    2. Balanced chapter lengths and content depth
+    3. Effective chapter-to-chapter flow
+    4. Strong introduction and conclusion
+    5. Appropriate book length and pacing
     
-    STRUCTURE AND ORGANIZATION:
-    1. Adherence to original design
-    2. Appropriate chapter length
-    3. Logical organization of information
-    4. Effectiveness of introduction and conclusion
+    CONTENT COMPLETENESS:
+    1. All required topics covered adequately
+    2. Information accuracy and currency
+    3. Appropriate depth for target audience
+    4. Balanced treatment of different aspects
+    5. No gaps or redundancies
     
-    If you find errors or inconsistencies, provide:
-    - Specific identification of the problem
-    - Explanation of why it's problematic
-    - Concrete suggestion for correction
-    - Problem priority (high/medium/low)
+    EDITORIAL QUALITY:
+    1. Overall language quality and clarity
+    2. Absence of repetition or contradictions
+    3. Consistent terminology usage
+    4. Professional presentation standards
+    5. Reader engagement throughout
     
-    Maximum number of iterations for corrections: 3
+    PUBLICATION READINESS:
+    1. Market appropriateness
+    2. Commercial viability
+    3. Competitive positioning
+    4. Target audience satisfaction
     
   expected_output: >
-    A detailed quality control report that includes:
+    A comprehensive final quality report that includes:
     
     1. EXECUTIVE SUMMARY:
-       - General quality assessment (Excellent/Good/Sufficient/Insufficient)
-       - Total number of problems found by category
-       - General recommendations
+       - Overall quality assessment (EXCELLENT/GOOD/SATISFACTORY/NEEDS_WORK)
+       - Publication recommendation (READY/MINOR_ADJUSTMENTS/MAJOR_REVISIONS)
+       - Key strengths and achievements
     
-    2. DETAILED ANALYSIS:
-       - Specific list of each error found with location
-       - Problem categorization by type
-       - Concrete suggestions for each correction
+    2. CONSISTENCY ANALYSIS:
+       - Narrative flow evaluation
+       - Style and tone consistency
+       - Chapter-to-chapter coherence
+       - Design adherence assessment
     
-    3. CONSISTENCY EVALUATION:
-       - Analysis of narrative consistency between chapters
-       - Verification of adherence to original design
-       - Assessment of overall logical thread
+    3. CONTENT EVALUATION:
+       - Topic coverage completeness
+       - Information accuracy verification
+       - Target audience appropriateness
+       - Engagement and readability assessment
     
-    4. RECOMMENDATIONS:
-       - Priority of necessary corrections
-       - Suggestions for optional improvements
-       - Notes for future revisions
+    4. STRUCTURAL REVIEW:
+       - Book architecture effectiveness
+       - Chapter balance and pacing
+       - Introduction and conclusion strength
+       - Overall organization quality
     
-    If there are no significant problems, declare the book "APPROVED FOR PUBLICATION"
-    with a brief explanation of the quality achieved.
+    5. FINAL RECOMMENDATIONS:
+       - Publication decision with rationale
+       - Any final adjustments needed
+       - Marketing considerations
+       - Competitive positioning notes
+    
+    6. REVISION PROCESS SUMMARY:
+       - Overview of chapter revision cycles
+       - Quality improvements achieved
+       - Writer-controller collaboration effectiveness
+       - Process efficiency evaluation
+    
+    If the book meets publication standards, declare it "APPROVED FOR PUBLICATION"
+    with detailed justification. If not, provide specific guidance for final improvements.
 
 final_evaluation:
   description: >
     As Editorial Director, provide a professional and comprehensive evaluation
     of the completed book, assigning a final grade based on industry-standard
-    editorial criteria.
+    editorial criteria. This evaluation considers the enhanced quality achieved
+    through the interactive writer-controller revision process.
     
     Evaluation criteria (each on 1-10 scale):
     
     1. WRITING QUALITY (25%)
        - Language fluidity and clarity
-       - Vocabulary richness
-       - Stylistic effectiveness
-       - Absence of errors
+       - Vocabulary richness and appropriateness
+       - Stylistic effectiveness and consistency
+       - Grammar and technical accuracy
+       - Benefit from revision process
     
     2. CONSISTENCY AND STRUCTURE (20%)
        - Logical content organization
        - Narrative consistency between chapters
        - Book architecture effectiveness
        - Transitions and connections
+       - Adherence to original design
     
     3. CONTENT VALUE (25%)
        - Information depth and accuracy
        - Originality and insights
        - Relevance to target audience
        - Treatment completeness
+       - Research integration quality
     
     4. ENGAGEMENT AND READABILITY (15%)
-       - Ability to capture attention
-       - Maintaining interest
+       - Ability to capture and maintain attention
        - Language accessibility
-       - Narrative rhythm
+       - Narrative rhythm and pacing
+       - Reader satisfaction potential
     
     5. TARGET APPROPRIATENESS (15%)
-       - Tone appropriateness
+       - Tone appropriateness for audience
        - Adequate complexity level
-       - Example relevance
+       - Example relevance and effectiveness
        - Expectation satisfaction
     
     Calculate final grade as weighted average of criteria.
     
     Final evaluation scale:
     - 9.0-10.0: Masterpiece (immediate publication, potential bestseller)
-    - 8.0-8.9: Excellent (recommended publication)
-    - 7.0-7.9: Good (publishable with minimal adjustments)
-    - 6.0-6.9: Sufficient (moderate revisions needed)
-    - 5.0-5.9: Insufficient (substantial revisions required)
-    - <5.0: Unacceptable (rewriting necessary)
+    - 8.0-8.9: Excellent (recommended publication, high market potential)
+    - 7.0-7.9: Good (publishable, solid commercial prospects)
+    - 6.0-6.9: Sufficient (publishable with market positioning)
+    - 5.0-5.9: Below Standard (needs significant improvement)
+    - <5.0: Unacceptable (major revision required)
     
   expected_output: >
     A professional editorial evaluation that includes:
     
     1. EXECUTIVE SUMMARY:
-       - Final grade out of 10
-       - Quality category
-       - Editorial recommendation
+       - Final grade out of 10 with one decimal place
+       - Quality category and market assessment
+       - Publication recommendation with confidence level
+       - Impact of interactive revision process
     
     2. DETAILED ANALYSIS BY CRITERIA:
        - Specific score for each criterion (1-10)
-       - Detailed comments on strengths
-       - Identification of improvement areas
+       - Detailed comments on strengths and achievements
+       - Identification of any remaining improvement areas
+       - Evidence of quality enhancement from revisions
     
-    3. STRENGTHS:
-       - Excellent aspects of the book
+    3. PROCESS EVALUATION:
+       - Effectiveness of writer-controller interaction
+       - Quality improvement through revision cycles
+       - Comparison to traditional single-draft approach
+       - Innovation and collaboration assessment
+    
+    4. STRENGTHS AND ACHIEVEMENTS:
+       - Excellent aspects of the completed book
        - Distinctive and original elements
-       - Features that make it competitive
+       - Competitive advantages in the market
+       - Reader value proposition
     
-    4. IMPROVEMENT AREAS:
-       - Aspects that could be enhanced
-       - Suggestions for future editions
-       - Marketing considerations
+    5. MARKET POSITIONING:
+       - Target audience fit and appeal
+       - Competitive landscape analysis
+       - Commercial potential assessment
+       - Marketing angle recommendations
     
-    5. FINAL RECOMMENDATIONS:
-       - Publication decision
-       - Suggested marketing strategy
-       - Estimated sales target
-       - Notes for the author
+    6. FINAL RECOMMENDATIONS:
+       - Publication strategy suggestions
+       - Marketing and positioning advice
+       - Author development notes
+       - Future project considerations
     
-    6. MARKET COMPARISON:
-       - Positioning versus competition
-       - Commercial potential
-       - Actual target audience
+    7. QUALITY ASSURANCE NOTES:
+       - Confirmation of publication readiness
+       - Risk assessment for market success
+       - Benchmark comparison with industry standards
+       - Editorial process validation
     
-    The evaluation must be objective, constructive, and professional,
-    providing judgment that reflects publishing industry standards.
+    The evaluation must be objective, comprehensive, and reflect current
+    publishing industry standards while highlighting the benefits of the
+    collaborative revision process implemented.
